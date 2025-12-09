@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "ac11937-rekor-tools"
+version = "0.0.0" # POETRY_DYNAMIC_VERSION overwrites this dummy version
+description = "Tools to make using Rekor eaiser"
+license = "Apache-2.0"
+readme = "src/ac11937/rekor_tools/README.md"
+authors = ["Warren Pfeffer <ac11937@nyu.edu>"]
+exclude = ["**/.gitignore","bin"]
+include = [
+    { path = "dist/cyclonedx-sbom.json", format = ["wheel"] }
+]
+
+[[tool.poetry.packages]]
+include = "ac11937"
+from = "src"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+jsonschema = ">=4.25.1,<5.0.0"
+requests = ">=2.32.5,<3.0.0"
+cryptography = ">=46.0.3,<47.0.0"
+
+[tool.poetry.scripts]
+ac11937_rekor_tool = "ac11937.rekor_tools.main:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
